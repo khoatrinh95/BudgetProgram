@@ -1,0 +1,30 @@
+{
+   "ukg":{
+      "rent":1000,
+      "hydro":0,
+      "internet":0,
+      "phone":80,
+      "transport":100,
+      "grocery":500,
+      "gym":0,
+      "food":300,
+      "shopping":300,
+      "activity":100,
+      "loan":120,
+      "mom":150
+   },
+   "dream":{
+      "rent":1800,
+      "hydro":80,
+      "internet":50,
+      "phone":80,
+      "transport":100,
+      "grocery":500,
+      "gym":50,
+      "food":300,
+      "shopping":300,
+      "activity":100,
+      "loan":120,
+      "mom":150
+   }
+}
