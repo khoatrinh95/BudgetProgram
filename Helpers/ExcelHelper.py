@@ -1,6 +1,5 @@
 import pandas as pd
 from openpyxl.formatting.rule import CellIsRule
-from openpyxl.styles import Font, PatternFill
 from openpyxl.utils import get_column_letter
 
 def writeDfToExcel(df, excelBook, sheetName, startRow, startCol):
@@ -65,7 +64,7 @@ def writeToCell(excelBook, sheetName, cellRow, cellColumn, value, cellStyle):
 def getColumnLetter(index):
     return get_column_letter(index)
 
-def comparingConditionalFormatting(excelBook, sheetName, positiveFill, negativeFill):
+def comparingConditionalFormatting(excelBook, sheetName, comparedCell, comparingCell, positiveFill, negativeFill):
     ws = excelBook.book[sheetName]
-    ws.conditional_formatting.add('B48:B54', CellIsRule(operator='greaterThan', formula=['100'], fill=negativeFill))
-    ws.conditional_formatting.add('B48:B54', CellIsRule(operator='lessThan', formula=['100'], fill=positiveFill))
+    ws.conditional_formatting.add(comparedCell, CellIsRule(operator='greaterThan', formula=[comparingCell], fill=negativeFill))
+    ws.conditional_formatting.add(comparedCell, CellIsRule(operator='lessThan', formula=[comparingCell], fill=positiveFill))

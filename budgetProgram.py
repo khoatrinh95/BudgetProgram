@@ -8,8 +8,12 @@ from Models.ExcelBook import ExcelBook
 pd.set_option('display.max_rows', None)
 # pd.set_option('display.max_columns', None)
 
-# Read json
+# Read words json
 categoryDict = JsonHelper.readJson(constants.WORDS_JSON_PATH)
+categories = categoryDict.keys()
+
+# Read budget json
+budgetDict = JsonHelper.readJson(constants.BUDGET_JSON_PATH)[constants.BUDGET_TYPE]
 
 # Read csv
 csvPath = 'data/csv32641.csv'
@@ -37,7 +41,7 @@ for word in categoryDict[constants.IGNORE]:
     df = DFHelper.filterDf(df, df[constants.DESCRIPTION_ONE].str.contains(word, case=False) == False)
 
 # Analyze
-for category in constants.categories:
+for category in categories:
     condition = description.apply(lambda d: any([word in d.lower() for word in categoryDict[category]]))
     DFHelper.updateDF(df, condition, constants.CATEGORY, category)
 
@@ -54,24 +58,30 @@ ExcelHelper.writeDfToExcel(df, excelBook, sheetName, 0, 0)
 
 # Add summary at the end of Excel sheet
 lastRow = excelBook.book[sheetName].max_row
+startRowSummary = lastRow + 3
 amountColumnLetter = ExcelHelper.getColumnLetter(df.columns.get_loc(constants.CAD) + 2)  # H
 categoryColumnLetter = ExcelHelper.getColumnLetter(df.columns.get_loc(constants.CATEGORY) + 2)  # J
 headerStyle = ExcelStyleHelper.registerStyles()
 
-for category in constants.categories:
-    # =-1*SUMIF(J2:J<end> , <category> , H2:H<end>)
-    formula = f"=-1*SUMIF({categoryColumnLetter}2:{categoryColumnLetter}{lastRow},\"{category}\",{amountColumnLetter}2:{amountColumnLetter}{lastRow})"
-    # print(formula)
-    ExcelHelper.writeToCell(excelBook, sheetName, cellRow=lastRow + 3, cellColumn=1, value=category.upper(), cellStyle="header")
-    ExcelHelper.writeToCell(excelBook, sheetName, cellRow=lastRow + 3, cellColumn=2, value=formula, cellStyle=None)
-    lastRow = lastRow + 1
-
-
 # Conditional format
 redFill = ExcelStyleHelper.createPatternFill(startColor='EE1111', endColor='EE1111', fillType='solid')
 blueFill = ExcelStyleHelper.createPatternFill(startColor='0000CCFF', endColor='0000CCFF', fillType='solid')
-ExcelHelper.comparingConditionalFormatting(excelBook, sheetName, blueFill, redFill)
+
+for category in categories:
+    if category.lower() == constants.IGNORE.lower():
+        continue
+
+    # =-1*SUMIF(J2:J<end> , <category> , H2:H<end>)
+    formula = f"=-1*SUMIF({categoryColumnLetter}2:{categoryColumnLetter}{lastRow},\"{category}\",{amountColumnLetter}2:{amountColumnLetter}{lastRow})"
+    # print(formula)
+    ExcelHelper.writeToCell(excelBook, sheetName, cellRow=startRowSummary, cellColumn=1, value=category.upper(), cellStyle="header")
+    ExcelHelper.writeToCell(excelBook, sheetName, cellRow=startRowSummary, cellColumn=2, value=formula, cellStyle=None)
+    comparedCell = ExcelHelper.getColumnLetter(2) + str(startRowSummary)
+    ExcelHelper.comparingConditionalFormatting(excelBook, sheetName, comparedCell, budgetDict[category], blueFill, redFill)
+    startRowSummary = startRowSummary + 1
 
 # Format Excel sheet
 ExcelHelper.adjustColumnWidth(excelBook, sheetName)
+
+
 print(df)

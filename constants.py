@@ -1,6 +1,6 @@
-# CSV HEADERS
 import os
 
+# CSV HEADERS
 ACCOUNT_TYPE = 'Account Type'
 ACCOUNT_NUMBER = 'Account Number'
 TRANSACTION_DATE = 'Transaction Date'
@@ -20,7 +20,6 @@ FOOD = "food"
 MOM = "mom"
 GROCERY = "grocery"
 IGNORE = "ignore"
-categories = [TRANSPORT, PHONE, SHOPPING, ACTIVITY, FOOD, GROCERY, MOM]
 
 # STYLE CONFIG
 STYLE_NAME = 'name'
@@ -36,3 +35,6 @@ WORDS_JSON_PATH = os.path.join(absolute_path, 'data/words.json')
 CSV_RESULT_PATH = os.path.join(absolute_path, 'data/output.csv')
 STYLE_JSON_PATH = os.path.join(absolute_path, 'data/style.json')
 BUDGET_JSON_PATH = os.path.join(absolute_path, 'data/budget.json')
+
+# BUDGET TO COMPARE
+BUDGET_TYPE = "ukg"
