@@ -16,7 +16,7 @@ categories = categoryDict.keys()
 budgetDict = JsonHelper.readJson(constants.BUDGET_JSON_PATH)[constants.BUDGET_TYPE]
 
 # Read csv
-csvPath = 'data/csv32641.csv'
+csvPath = constants.BANKING_CSV_PATH
 df = CSVHelper.readCsv(csvPath, False)
 description = df[constants.DESCRIPTION_ONE]
 
@@ -30,8 +30,8 @@ df = DFHelper.filterDf(df, df[constants.CAD] < 0)
 DFHelper.convertColumnToProperDate(df, constants.TRANSACTION_DATE)
 
 # Filter a specific month
-year = 2022
-month = 11
+year = constants.YEAR
+month = constants.MONTH
 firstAndLastDateOfMonth = DateTimeHelper.getFirstAndLastDateOfMonth(year, month)
 df = DFHelper.filterDf(df, (df[constants.TRANSACTION_DATE] >= firstAndLastDateOfMonth[0]) & (
             df[constants.TRANSACTION_DATE] <= firstAndLastDateOfMonth[1]))
@@ -49,7 +49,7 @@ for category in categories:
 CSVHelper.writeCsv(df, constants.CSV_RESULT_PATH, False)
 
 # Append result to Excel
-excelPath = "output/BUDGETtest.xlsx"
+excelPath = constants.OUTPUT_EXCEL_PATH
 sheetName = "%s-%s" % (year, month)
 
 # Append result to Excel
