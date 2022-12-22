@@ -51,5 +51,21 @@
          "shrinkToFit":false,
          "indent":0
       }
+   },
+   {
+      "name": "redFill",
+      "fill":{
+         "fillType":"solid",
+         "endColor": "EE1111",
+         "startColor":"EE1111"
+      }
+   },
+      {
+      "name": "blueFill",
+      "fill":{
+         "fillType":"solid",
+         "endColor": "0000CCFF",
+         "startColor":"0000CCFF"
+      }
    }
 ]

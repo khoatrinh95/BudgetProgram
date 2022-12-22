@@ -73,13 +73,17 @@ def readStyles():
     return cellStyleList
 
 
-def registerStyle(style):
+def registerStyle(style, book):
     styleName = style.name
     styleFont = style.font
     styleFill = style.fill
     styleAlignment = style.alignment
     styleBorder = style.border
     styleProtection = style.protection
+
+    wb = book.book
+    if styleName in wb.named_styles:
+        del wb._named_styles[wb.style_names.index(styleName)]
 
     registeredStyle = NamedStyle(name=styleName)
 
@@ -108,10 +112,12 @@ def registerStyle(style):
     return registeredStyle
 
 
-def registerStyles():
+def registerStyles(book):
     styleList = readStyles()
     for style in styleList:
-        registerStyle(style)
+        namedStyle = registerStyle(style, book)
+        book.book.add_named_style(namedStyle)
+
 
 def createPatternFill(startColor, endColor, fillType):
     return PatternFill(start_color=startColor, end_color=endColor, fill_type=fillType)

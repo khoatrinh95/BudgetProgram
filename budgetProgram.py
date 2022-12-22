@@ -64,11 +64,13 @@ lastRow = excelBook.book[sheetName].max_row
 startRowSummary = lastRow + 3
 amountColumnLetter = ExcelHelper.getColumnLetter(df.columns.get_loc(constants.CAD) + 2)  # H
 categoryColumnLetter = ExcelHelper.getColumnLetter(df.columns.get_loc(constants.CATEGORY) + 2)  # J
-headerStyle = ExcelStyleHelper.registerStyles()
+headerStyle = ExcelStyleHelper.registerStyles(excelBook)
 
 # Conditional format
-redFill = ExcelStyleHelper.createPatternFill(startColor='EE1111', endColor='EE1111', fillType='solid')
-blueFill = ExcelStyleHelper.createPatternFill(startColor='0000CCFF', endColor='0000CCFF', fillType='solid')
+redFillStyle = ExcelStyleHelper.getStyle('redFill')["fill"]
+blueFillStyle = ExcelStyleHelper.getStyle('blueFill')["fill"]
+redFill = ExcelStyleHelper.createPatternFill(**redFillStyle)
+blueFill = ExcelStyleHelper.createPatternFill(**blueFillStyle)
 
 for category in categories:
     if category.lower() == constants.IGNORE.lower():
@@ -85,6 +87,11 @@ for category in categories:
 
 # Format Excel sheet
 ExcelHelper.adjustColumnWidth(excelBook, sheetName)
+
+# Add legend to end
+lastRow = excelBook.book[sheetName].max_row
+ExcelHelper.writeToCell(excelBook, sheetName, cellRow=lastRow+5, cellColumn=2, value="OVERSPENT", cellStyle="redFill")
+ExcelHelper.writeToCell(excelBook, sheetName, cellRow=lastRow+6, cellColumn=2, value="UNDERSPENT", cellStyle="blueFill")
 
 
 print(df)
