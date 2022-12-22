@@ -41,7 +41,7 @@ BUDGET_TYPE = "ukg"
 
 
 # INPUT
-BANKING_CSV_PATH = os.path.join(absolute_path, 'data/csv75031.csv')
+BANKING_CSV_PATH = os.path.join(absolute_path, 'data/csv32641.csv')
 MONTH = 11
 YEAR = 2022
 OUTPUT_EXCEL_PATH = os.path.join(absolute_path, "output/BUDGETtest.xlsx")

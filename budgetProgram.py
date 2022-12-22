@@ -40,10 +40,13 @@ df = DFHelper.filterDf(df, (df[constants.TRANSACTION_DATE] >= firstAndLastDateOf
 for word in categoryDict[constants.IGNORE]:
     df = DFHelper.filterDf(df, df[constants.DESCRIPTION_ONE].str.contains(word, case=False) == False)
 
+# Mask account number
+DFHelper.updateDFWithoutCondition(df, constants.ACCOUNT_NUMBER, "*********" + df[constants.ACCOUNT_NUMBER].str[-4:])
+
 # Analyze
 for category in categories:
     condition = description.apply(lambda d: any([word in d.lower() for word in categoryDict[category]]))
-    DFHelper.updateDF(df, condition, constants.CATEGORY, category)
+    DFHelper.updateDFOnCondition(df, condition, constants.CATEGORY, category)
 
 # Write result to csv
 CSVHelper.writeCsv(df, constants.CSV_RESULT_PATH, False)
