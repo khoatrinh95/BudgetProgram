@@ -28,13 +28,20 @@ STYLE_BORDER = 'border'
 STYLE_FILL = 'fill'
 STYLE_ALIGNMENT = 'alignment'
 STYLE_PROTECTION = 'protection'
+STYLE_NAME_HEADER1 = 'header1'
+STYLE_NAME_HEADER2_LEFT = 'header2-left'
+STYLE_NAME_HEADER2_RIGHT = 'header2-right'
+STYLE_NAME_HEADER3_LEFT = 'header3-left'
+STYLE_NAME_HEADER3_RIGHT = 'header3-right'
+STYLE_NAME_ALIGN_LEFT = "align-left"
+STYLE_NAME_ALIGN_RIGHT = "align-right"
 
 # PATHS
 absolute_path = os.path.dirname(__file__)
-WORDS_JSON_PATH = os.path.join(absolute_path, 'data/words.json')
+WORDS_JSON_PATH = os.path.join(absolute_path, 'Profiles/TestProfile/words.json')
 CSV_RESULT_PATH = os.path.join(absolute_path, 'data/output.csv')
 STYLE_JSON_PATH = os.path.join(absolute_path, 'data/style.json')
-BUDGET_JSON_PATH = os.path.join(absolute_path, 'data/budget.json')
+BUDGET_JSON_PATH = os.path.join(absolute_path, 'Profiles/TestProfile/budget.json')
 
 # BUDGET TO COMPARE
 BUDGET_TYPE = "ukg"
@@ -42,6 +49,6 @@ BUDGET_TYPE = "ukg"
 
 # INPUT
 BANKING_CSV_PATH = os.path.join(absolute_path, 'data/bank/new.csv')
-MONTH = 12
+MONTH = 11
 YEAR = 2022
 OUTPUT_EXCEL_PATH = os.path.join(absolute_path, "output/BUDGETtest.xlsx")

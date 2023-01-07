@@ -62,15 +62,27 @@ ExcelHelper.writeDfToExcel(df, excelBook, sheetName, 0, 0)
 # Add summary at the end of Excel sheet
 lastRow = excelBook.book[sheetName].max_row
 startRowSummary = lastRow + 3
+currentRow = startRowSummary
 amountColumnLetter = ExcelHelper.getColumnLetter(df.columns.get_loc(constants.CAD) + 2)  # H
 categoryColumnLetter = ExcelHelper.getColumnLetter(df.columns.get_loc(constants.CATEGORY) + 2)  # J
 headerStyle = ExcelStyleHelper.registerStyles(excelBook)
 
 # Conditional format
 redFillStyle = ExcelStyleHelper.getStyle('redFill')["fill"]
-blueFillStyle = ExcelStyleHelper.getStyle('blueFill')["fill"]
 redFill = ExcelStyleHelper.createPatternFill(**redFillStyle)
-blueFill = ExcelStyleHelper.createPatternFill(**blueFillStyle)
+
+# Add summary header
+ExcelHelper.writeToCell(excelBook, sheetName, cellRow=currentRow, cellColumn=1, value="", cellStyle=constants.STYLE_NAME_HEADER1)
+ExcelHelper.writeToCell(excelBook, sheetName, cellRow=currentRow, cellColumn=2, value="SUMMARY", cellStyle=constants.STYLE_NAME_HEADER1)
+ExcelHelper.writeToCell(excelBook, sheetName, cellRow=currentRow, cellColumn=3, value="", cellStyle=constants.STYLE_NAME_HEADER1)
+currentRow = currentRow + 1
+
+# Add Category, Actual Cost, Projected Cost headers
+ExcelHelper.writeToCell(excelBook, sheetName, cellRow=currentRow, cellColumn=1, value="CATEGORY", cellStyle=constants.STYLE_NAME_HEADER3_LEFT)
+ExcelHelper.writeToCell(excelBook, sheetName, cellRow=currentRow, cellColumn=2, value="ACTUAL COST", cellStyle=constants.STYLE_NAME_HEADER3_RIGHT)
+ExcelHelper.writeToCell(excelBook, sheetName, cellRow=currentRow, cellColumn=3, value="PROJECTED COST", cellStyle=constants.STYLE_NAME_HEADER3_RIGHT)
+currentRow = currentRow + 1
+
 
 for category in categories:
     if category.lower() == constants.IGNORE.lower():
@@ -79,20 +91,22 @@ for category in categories:
     # =-1*SUMIF(J2:J<end> , <category> , H2:H<end>)
     formula = f"=-1*SUMIF({categoryColumnLetter}2:{categoryColumnLetter}{lastRow},\"{category}\",{amountColumnLetter}2:{amountColumnLetter}{lastRow})"
     # print(formula)
-    ExcelHelper.writeToCell(excelBook, sheetName, cellRow=startRowSummary, cellColumn=1, value=category.upper(), cellStyle="header")
-    ExcelHelper.writeToCell(excelBook, sheetName, cellRow=startRowSummary, cellColumn=2, value=formula, cellStyle=None)
-    comparedCell = ExcelHelper.getColumnLetter(2) + str(startRowSummary)
-    ExcelHelper.comparingConditionalFormatting(excelBook, sheetName, comparedCell, budgetDict[category], blueFill, redFill)
-    startRowSummary = startRowSummary + 1
+    ExcelHelper.writeToCell(excelBook, sheetName, cellRow=currentRow, cellColumn=1, value=category.capitalize(), cellStyle=constants.STYLE_NAME_ALIGN_LEFT)
+    ExcelHelper.writeToCell(excelBook, sheetName, cellRow=currentRow, cellColumn=2, value=formula, cellStyle=constants.STYLE_NAME_ALIGN_RIGHT)
+    ExcelHelper.writeToCell(excelBook, sheetName, cellRow=currentRow, cellColumn=3, value=budgetDict[category], cellStyle=constants.STYLE_NAME_ALIGN_RIGHT)
+    comparedCell = ExcelHelper.getColumnLetter(2) + str(currentRow)
+    ExcelHelper.comparingConditionalFormatting(excelBook, sheetName, comparedCell, budgetDict[category], None, redFill)
+    currentRow = currentRow + 1
+
+# Add Total at end
+actualSumFormula = f"=SUM(B{startRowSummary}:B{currentRow-1})"
+projectedSumFormula = f"=SUM(C{startRowSummary}:C{currentRow-1})"
+ExcelHelper.writeToCell(excelBook, sheetName, cellRow=currentRow, cellColumn=1, value="TOTAL", cellStyle=constants.STYLE_NAME_HEADER2_LEFT)
+ExcelHelper.writeToCell(excelBook, sheetName, cellRow=currentRow, cellColumn=2, value=actualSumFormula, cellStyle=constants.STYLE_NAME_HEADER2_RIGHT)
+ExcelHelper.writeToCell(excelBook, sheetName, cellRow=currentRow, cellColumn=3, value=projectedSumFormula, cellStyle=constants.STYLE_NAME_HEADER2_RIGHT)
 
 # Format Excel sheet
 ExcelHelper.adjustColumnWidth(excelBook, sheetName)
-
-# Add legend to end
-lastRow = excelBook.book[sheetName].max_row
-ExcelHelper.writeToCell(excelBook, sheetName, cellRow=lastRow+5, cellColumn=2, value="OVERSPENT", cellStyle="redFill")
-ExcelHelper.writeToCell(excelBook, sheetName, cellRow=lastRow+6, cellColumn=2, value="UNDERSPENT", cellStyle="blueFill")
-
 
 print(df)
 
