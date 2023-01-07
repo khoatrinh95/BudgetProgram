@@ -108,7 +108,16 @@ ExcelHelper.writeToCell(excelBook, sheetName, cellRow=currentRow, cellColumn=3, 
 # Format Excel sheet
 ExcelHelper.adjustColumnWidth(excelBook, sheetName)
 
+# Clean up Excel sheet
+workbook = excelBook.book
+sheetNames = workbook.sheetnames
+if 'Sheet' in sheetNames:
+    std = workbook['Sheet']
+    workbook.remove(std)
+    workbook.save(excelPath)
 print(df)
 
 
+# TODO: create a backup of current excel sheet when running the account
+# TODO: try with new budget categories, words, amounts
 # TODO: save input category and learn from it

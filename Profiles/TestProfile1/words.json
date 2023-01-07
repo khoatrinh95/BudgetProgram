@@ -1,0 +1,65 @@
+{
+   "transport":[
+      "gare",
+      "pine beach",
+      "bixi",
+      "stm",
+      "uber",
+      "essence",
+      "gas station",
+      "ultramar",
+      "shell",
+      "petro",
+      "esso"
+   ],
+   "phone":[
+      "telus",
+      "fizz",
+      "fido",
+      "rogers",
+      "koodo"
+   ],
+   "shopping":[
+      "amazon",
+      "apple",
+      "zara",
+      "sports experts",
+      "decathlon",
+      "pharmaprix",
+      "jean coutu"
+   ],
+   "activity":[
+
+   ],
+   "food":[
+      "tim hortons",
+      "presotea",
+      "subway",
+      "cafe",
+      "starbucks",
+      "shawarmaz",
+      "nouilles",
+      "noodles",
+      "patisserie",
+      "poke",
+      "sushi",
+      "hotpot",
+      "sandwich",
+      "pho",
+      "cuisine",
+      "mcdonald"
+   ],
+   "grocery1":[
+      "adonis",
+      "iga",
+      "metro",
+      "maxi"
+   ],
+   "mom":[
+
+   ],
+   "ignore":[
+      "investment",
+      "find & save"
+   ]
+}

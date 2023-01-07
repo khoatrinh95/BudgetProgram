@@ -38,10 +38,10 @@ STYLE_NAME_ALIGN_RIGHT = "align-right"
 
 # PATHS
 absolute_path = os.path.dirname(__file__)
-WORDS_JSON_PATH = os.path.join(absolute_path, 'Profiles/TestProfile/words.json')
+WORDS_JSON_PATH = os.path.join(absolute_path, 'Profiles/TestProfile1/words.json')
 CSV_RESULT_PATH = os.path.join(absolute_path, 'data/output.csv')
 STYLE_JSON_PATH = os.path.join(absolute_path, 'data/style.json')
-BUDGET_JSON_PATH = os.path.join(absolute_path, 'Profiles/TestProfile/budget.json')
+BUDGET_JSON_PATH = os.path.join(absolute_path, 'Profiles/TestProfile1/budget.json')
 
 # BUDGET TO COMPARE
 BUDGET_TYPE = "ukg"
@@ -49,6 +49,6 @@ BUDGET_TYPE = "ukg"
 
 # INPUT
 BANKING_CSV_PATH = os.path.join(absolute_path, 'data/bank/new.csv')
-MONTH = 11
+MONTH = 12
 YEAR = 2022
 OUTPUT_EXCEL_PATH = os.path.join(absolute_path, "output/BUDGETtest.xlsx")
