@@ -95,3 +95,6 @@ ExcelHelper.writeToCell(excelBook, sheetName, cellRow=lastRow+6, cellColumn=2, v
 
 
 print(df)
+
+
+# TODO: save input category and learn from it
