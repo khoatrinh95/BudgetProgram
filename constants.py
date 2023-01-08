@@ -42,6 +42,8 @@ WORDS_JSON_PATH = os.path.join(absolute_path, 'Profiles/TestProfile1/words.json'
 CSV_RESULT_PATH = os.path.join(absolute_path, 'data/output.csv')
 STYLE_JSON_PATH = os.path.join(absolute_path, 'data/style.json')
 BUDGET_JSON_PATH = os.path.join(absolute_path, 'Profiles/TestProfile1/budget.json')
+BACKUP_FOLDER_PATH = os.path.join(absolute_path, 'backup/')
+OUTPUT_FOLDER_PATH = os.path.join(absolute_path, 'output/')
 
 # BUDGET TO COMPARE
 BUDGET_TYPE = "ukg"

@@ -1,5 +1,5 @@
 import pandas as pd
-from Helpers import CSVHelper, DFHelper, JsonHelper, ExcelHelper, DateTimeHelper, ExcelStyleHelper
+from Helpers import CSVHelper, DFHelper, JsonHelper, ExcelHelper, DateTimeHelper, ExcelStyleHelper, MaintainHelper
 import constants
 
 # Config
@@ -54,6 +54,12 @@ CSVHelper.writeCsv(df, constants.CSV_RESULT_PATH, False)
 # Append result to Excel
 excelPath = constants.OUTPUT_EXCEL_PATH
 sheetName = "%s-%s" % (year, month)
+
+# Save backup of current Excel sheet
+# go through backup folder, see if there's any file older than 60 days -> if yes then delete
+# save current file to backup folder
+MaintainHelper.cleanBackupFolder()
+MaintainHelper.saveFileToBackupFolder()
 
 # Append result to Excel
 excelBook = ExcelBook(excelPath)
