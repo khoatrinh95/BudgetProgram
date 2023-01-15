@@ -1,4 +1,11 @@
 import os
+import sys
+
+
+def resource_path(relative_path):
+    """ Get absolute path to resource, works for dev and for PyInstaller """
+    base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
+    return os.path.join(base_path, relative_path)
 
 # CSV HEADERS
 ACCOUNT_TYPE = 'Account Type'
@@ -54,3 +61,14 @@ BANKING_CSV_PATH = os.path.join(absolute_path, 'data/bank/new.csv')
 MONTH = 12
 YEAR = 2022
 OUTPUT_EXCEL_PATH = os.path.join(absolute_path, "output/BUDGETtest.xlsx")
+
+# CONVERT ALL PATHS TO WORK WITH PYINSTALLER
+WORDS_JSON_PATH = resource_path('Profiles/TestProfile1/words.json')
+CSV_RESULT_PATH = resource_path('data/output.csv')
+STYLE_JSON_PATH = resource_path('data/style.json')
+BUDGET_JSON_PATH = resource_path('Profiles/TestProfile1/budget.json')
+BACKUP_FOLDER_PATH = resource_path('backup/')
+# OUTPUT_FOLDER_PATH = resource_path('output/')
+BANKING_CSV_PATH = resource_path('data/bank/new.csv')
+# OUTPUT_EXCEL_PATH = resource_path("output/BUDGETtest.xlsx")
+

@@ -1,12 +1,20 @@
 import pandas as pd
-from Helpers import CSVHelper, DFHelper, JsonHelper, ExcelHelper, DateTimeHelper, ExcelStyleHelper, MaintainHelper
+from Helpers import CSVHelper, DFHelper, JsonHelper, ExcelHelper, DateTimeHelper, ExcelStyleHelper, MaintainHelper, Prompts
 import constants
-
-# Config
 from Models.ExcelBook import ExcelBook
 
+# Config
 pd.set_option('display.max_rows', None)
 # pd.set_option('display.max_columns', None)
+
+
+# Greetings
+Prompts.greeting()
+
+# User input
+droppedFile = input("Please drop your bank statement in the window\n")
+constants.BANKING_CSV_PATH = droppedFile.strip()
+
 
 # Read words json
 categoryDict = JsonHelper.readJson(constants.WORDS_JSON_PATH)
@@ -58,6 +66,7 @@ sheetName = "%s-%s" % (year, month)
 # Save backup of current Excel sheet
 # go through backup folder, see if there's any file older than 60 days -> if yes then delete
 # save current file to backup folder
+MaintainHelper.createBackupFolder()
 MaintainHelper.cleanBackupFolder()
 MaintainHelper.saveFileToBackupFolder()
 
@@ -123,7 +132,16 @@ if 'Sheet' in sheetNames:
     workbook.save(excelPath)
 print(df)
 
-
-# TODO: create a backup of current excel sheet when running the account
-# TODO: try with new budget categories, words, amounts
+# TODO: how to let users input their banking statement and it produces an excel sheet outside of the exe
+# TODO: how to let users modify their budget categories outside of exe
 # TODO: save input category and learn from it
+
+
+# TODO: [Defect] Intel computers can't run
+
+
+
+# command to run pyinstaller
+"""
+pyinstaller --paths=/Users/khoatrinh/DevSpace/Budget/lib/python3.9/site-packages --add-data Profiles:Profiles --add-data data:data --add-data output:output budgetProgram.py
+"""

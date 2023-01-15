@@ -3,6 +3,10 @@ import os
 import constants
 import shutil
 
+def createBackupFolder():
+    if not os.path.exists(constants.BACKUP_FOLDER_PATH):
+        os.makedirs(constants.BACKUP_FOLDER_PATH)
+
 def cleanBackupFolder():
     files = os.listdir(constants.BACKUP_FOLDER_PATH)
     for file in files:
