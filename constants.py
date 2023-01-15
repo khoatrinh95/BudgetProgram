@@ -58,8 +58,8 @@ BUDGET_TYPE = "ukg"
 
 # INPUT
 BANKING_CSV_PATH = os.path.join(absolute_path, 'data/bank/new.csv')
-MONTH = 12
-YEAR = 2022
+MONTH = None
+YEAR = None
 OUTPUT_EXCEL_PATH = os.path.join(absolute_path, "output/BUDGETtest.xlsx")
 
 # CONVERT ALL PATHS TO WORK WITH PYINSTALLER

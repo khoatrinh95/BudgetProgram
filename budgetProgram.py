@@ -14,7 +14,11 @@ Prompts.greeting()
 # User input
 droppedFile = input("Please drop your bank statement in the window\n")
 constants.BANKING_CSV_PATH = droppedFile.strip()
-
+year = input("For which year you want to analyze?\n")
+constants.YEAR = int(year.strip())
+month = input("For which month you want to analyze?\n")
+constants.MONTH = int(month.strip())
+print("Got cha! Let's go!...")
 
 # Read words json
 categoryDict = JsonHelper.readJson(constants.WORDS_JSON_PATH)
