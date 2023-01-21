@@ -60,7 +60,7 @@ BUDGET_TYPE = "ukg"
 BANKING_CSV_PATH = os.path.join(absolute_path, 'data/bank/new.csv')
 MONTH = None
 YEAR = None
-OUTPUT_EXCEL_PATH = os.path.join(absolute_path, "output/BUDGETtest.xlsx")
+OUTPUT_EXCEL_PATH = os.path.join(absolute_path, "output/BUDGET.xlsx")
 
 # CONVERT ALL PATHS TO WORK WITH PYINSTALLER
 WORDS_JSON_PATH = resource_path('Profiles/TestProfile1/words.json')
@@ -68,7 +68,5 @@ CSV_RESULT_PATH = resource_path('data/output.csv')
 STYLE_JSON_PATH = resource_path('data/style.json')
 BUDGET_JSON_PATH = resource_path('Profiles/TestProfile1/budget.json')
 BACKUP_FOLDER_PATH = resource_path('backup/')
-# OUTPUT_FOLDER_PATH = resource_path('output/')
 BANKING_CSV_PATH = resource_path('data/bank/new.csv')
-# OUTPUT_EXCEL_PATH = resource_path("output/BUDGETtest.xlsx")
 
