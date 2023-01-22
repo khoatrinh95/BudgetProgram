@@ -9,20 +9,20 @@
       "strike": false
     },
     "border": {
-      "borderStyle": "thick",
+      "border_style": "thick",
       "color": "000000"
     },
     "fill": {
-      "fillType": "solid",
-      "startColor": "00FF9900",
-      "endColor": "FF000000"
+      "fill_type": "solid",
+      "start_color": "00FF9900",
+      "end_color": "FF000000"
     },
     "alignment": {
       "horizontal": "general",
       "vertical": "bottom",
-      "textRotation": 0,
-      "wrapText": false,
-      "shrinkToFit": false,
+      "text_rotation": 0,
+      "wrap_text": false,
+      "shrink_to_fit": false,
       "indent": 0
     },
     "protection": {
@@ -40,15 +40,15 @@
     "border": {
     },
     "fill": {
-      "fillType": "solid",
-      "startColor": "234062"
+      "fill_type": "solid",
+      "start_color": "234062"
     },
     "alignment": {
       "horizontal": "center",
       "vertical": "center",
-      "textRotation": 0,
-      "wrapText": false,
-      "shrinkToFit": false,
+      "text_rotation": 0,
+      "wrap_text": false,
+      "shrink_to_fit": false,
       "indent": 0
     }
   },
@@ -62,15 +62,15 @@
     "border": {
     },
     "fill": {
-      "fillType": "solid",
-      "startColor": "366092"
+      "fill_type": "solid",
+      "start_color": "366092"
     },
     "alignment": {
       "horizontal": "left",
       "vertical": "center",
-      "textRotation": 0,
-      "wrapText": false,
-      "shrinkToFit": false,
+      "text_rotation": 0,
+      "wrap_text": false,
+      "shrink_to_fit": false,
       "indent": 0
     }
   },
@@ -84,15 +84,15 @@
     "border": {
     },
     "fill": {
-      "fillType": "solid",
-      "startColor": "366092"
+      "fill_type": "solid",
+      "start_color": "366092"
     },
     "alignment": {
       "horizontal": "right",
       "vertical": "center",
-      "textRotation": 0,
-      "wrapText": false,
-      "shrinkToFit": false,
+      "text_rotation": 0,
+      "wrap_text": false,
+      "shrink_to_fit": false,
       "indent": 0
     }
   },
@@ -105,15 +105,15 @@
     "border": {
     },
     "fill": {
-      "fillType": "solid",
-      "startColor": "366092"
+      "fill_type": "solid",
+      "start_color": "366092"
     },
     "alignment": {
       "horizontal": "left",
       "vertical": "center",
-      "textRotation": 0,
-      "wrapText": false,
-      "shrinkToFit": false,
+      "text_rotation": 0,
+      "wrap_text": false,
+      "shrink_to_fit": false,
       "indent": 0
     }
   },
@@ -126,54 +126,54 @@
     "border": {
     },
     "fill": {
-      "fillType": "solid",
-      "startColor": "366092"
+      "fill_type": "solid",
+      "start_color": "366092"
     },
     "alignment": {
       "horizontal": "right",
       "vertical": "center",
-      "textRotation": 0,
-      "wrapText": false,
-      "shrinkToFit": false,
+      "text_rotation": 0,
+      "wrap_text": false,
+      "shrink_to_fit": false,
       "indent": 0
     }
   },
   {
     "name": "align-left",
     "fill": {
-      "fillType": "solid",
-      "startColor": "ffffff"
+      "fill_type": "solid",
+      "start_color": "ffffff"
     },
     "alignment": {
       "horizontal": "left",
       "vertical": "center",
-      "textRotation": 0,
-      "wrapText": false,
-      "shrinkToFit": false,
+      "text_rotation": 0,
+      "wrap_text": false,
+      "shrink_to_fit": false,
       "indent": 0
     }
   },
   {
     "name": "align-right",
     "fill": {
-      "fillType": "solid",
-      "startColor": "ffffff"
+      "fill_type": "solid",
+      "start_color": "ffffff"
     },
     "alignment": {
       "horizontal": "right",
       "vertical": "center",
-      "textRotation": 0,
-      "wrapText": false,
-      "shrinkToFit": false,
+      "text_rotation": 0,
+      "wrap_text": false,
+      "shrink_to_fit": false,
       "indent": 0
     }
   },
   {
     "name": "redFill",
     "fill": {
-      "fillType": "solid",
-      "endColor": "e6b8b7",
-      "startColor": "e6b8b7"
+      "fill_type": "solid",
+      "end_color": "e6b8b7",
+      "start_color": "e6b8b7"
     },
     "border": {
     }

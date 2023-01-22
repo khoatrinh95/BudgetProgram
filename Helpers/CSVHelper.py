@@ -1,8 +1,10 @@
 import pandas as pd
 
-def readCsv(path, indexCol):
-    df = pd.read_csv(path, index_col=indexCol)
+
+def read_csv(path, index_col):
+    df = pd.read_csv(path, index_col=index_col)
     return df
 
-def writeCsv(df, path, indexCol):
-    df.to_csv(path, index=indexCol)
+
+def write_csv(df, path, index_col):
+    df.to_csv(path, index=index_col)
