@@ -149,5 +149,5 @@ def main_program():
 
 # command to run pyinstaller
 """
-pyinstaller --paths=/Users/khoatrinh/DevSpace/Budget/lib/python3.9/site-packages --add-data Profiles:Profiles --add-data data:data --add-data output:output main_program.py
+pyinstaller --paths=/Users/khoatrinh/DevSpace/Budget/lib/python3.9/site-packages --add-data Profiles:Profiles --add-data data:data --add-data output:output MainProgram.py
 """

@@ -1,6 +1,6 @@
 from Helpers import Prompts
 import constants
-import main_program
+import MainProgram
 
 # Greetings
 Prompts.greeting()
@@ -19,7 +19,7 @@ while run:
 
     Prompts.prompt_ok()
 
-    main_program.main_program()
+    MainProgram.main_program()
 
     run = Prompts.prompt_after_run()
 
