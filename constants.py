@@ -19,13 +19,6 @@ USD = 'USD$'
 CATEGORY = "Category"
 
 # CATEGORIES
-TRANSPORT = "transport"
-PHONE = "phone"
-SHOPPING = "shopping"
-ACTIVITY = "activity"
-FOOD = "food"
-MOM = "mom"
-GROCERY = "grocery"
 IGNORE = "ignore"
 
 # STYLE CONFIG
@@ -43,30 +36,27 @@ STYLE_NAME_HEADER3_RIGHT = 'header3-right'
 STYLE_NAME_ALIGN_LEFT = "align-left"
 STYLE_NAME_ALIGN_RIGHT = "align-right"
 
-# PATHS
+# FOLDER PATHS
 absolute_path = os.path.dirname(__file__)
-WORDS_JSON_PATH = os.path.join(absolute_path, 'Profiles/TestProfile1/words.json')
-CSV_RESULT_PATH = os.path.join(absolute_path, 'data/output.csv')
-STYLE_JSON_PATH = os.path.join(absolute_path, 'data/style.json')
-BUDGET_JSON_PATH = os.path.join(absolute_path, 'Profiles/TestProfile1/budget.json')
-BACKUP_FOLDER_PATH = os.path.join(absolute_path, 'backup/')
-OUTPUT_FOLDER_PATH = os.path.join(absolute_path, 'output/')
+PROFILE_FOLDER_PATH = 'profiles/'
+BACKUP_FOLDER_PATH = 'backup/'
+DATA_FOLDER_PATH = 'data/'
+OUTPUT_FOLDER_PATH = 'output/'
 
 # BUDGET TO COMPARE
-BUDGET_TYPE = "ukg"
-
+BUDGET_TYPE = "budget1"
+BUDGET_PROFILE = "profile1"
 
 # INPUT
-BANKING_CSV_PATH = os.path.join(absolute_path, 'data/bank/new.csv')
 MONTH = None
 YEAR = None
-OUTPUT_EXCEL_PATH = os.path.join(absolute_path, "output/BUDGET.xlsx")
 
 # CONVERT ALL PATHS TO WORK WITH PYINSTALLER
-WORDS_JSON_PATH = resource_path('Profiles/TestProfile1/words.json')
-CSV_RESULT_PATH = resource_path('data/output.csv')
-STYLE_JSON_PATH = resource_path('data/style.json')
-BUDGET_JSON_PATH = resource_path('Profiles/TestProfile1/budget.json')
-BACKUP_FOLDER_PATH = resource_path('backup/')
-BANKING_CSV_PATH = resource_path('data/bank/new.csv')
+WORDS_JSON_PATH = resource_path(PROFILE_FOLDER_PATH + BUDGET_PROFILE + '/' + 'words.json')
+STYLE_JSON_PATH = resource_path(DATA_FOLDER_PATH + 'style.json')
+BUDGET_JSON_PATH = resource_path(PROFILE_FOLDER_PATH + BUDGET_PROFILE + '/' + 'budget.json')
+BACKUP_FOLDER_PATH = resource_path(BACKUP_FOLDER_PATH)
+OUTPUT_EXCEL_PATH = resource_path(OUTPUT_FOLDER_PATH + "BUDGET.xlsx")
 
+
+# /Users/khoatrinh/Downloads/csv75031.csv

@@ -96,7 +96,7 @@ def main_program():
                               cell_style=constants.STYLE_NAME_HEADER3_RIGHT)
     current_row = current_row + 1
 
-    for category in categories:
+    for category in budgetDict:
         if category.lower() == constants.IGNORE.lower():
             continue
 
@@ -140,7 +140,7 @@ def main_program():
 
 
 # TODO: implement logging system
-# TODO: reformat to Python convention
+# TODO: let user create Profile + their own budget + their budget words
 # TODO: save input category and learn from it
 
 
@@ -149,5 +149,5 @@ def main_program():
 
 # command to run pyinstaller
 """
-pyinstaller --paths=/Users/khoatrinh/DevSpace/Budget/lib/python3.9/site-packages --add-data Profiles:Profiles --add-data data:data --add-data output:output MainProgram.py
+pyinstaller --paths=/Users/khoatrinh/DevSpace/Budget/lib/python3.9/site-packages --add-data profiles:profiles --add-data data:data --add-data output:output MainProgram.py
 """

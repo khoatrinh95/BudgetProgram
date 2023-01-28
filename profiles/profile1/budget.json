@@ -1,5 +1,5 @@
 {
-   "ukg":{
+   "template":{
       "rent":1000,
       "hydro":0,
       "internet":0,
@@ -10,10 +10,9 @@
       "food":300,
       "shopping":300,
       "activity":100,
-      "loan":120,
-      "mom":150
+      "loan":120
    },
-   "dream":{
+   "budget1":{
       "rent":1800,
       "hydro":80,
       "internet":50,
@@ -24,7 +23,6 @@
       "food":300,
       "shopping":300,
       "activity":100,
-      "loan":120,
-      "mom":150
+      "loan":120
    }
 }
