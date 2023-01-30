@@ -125,4 +125,47 @@ Unlike other budgeting apps, this program only uses your banking statements and 
     - Check your spelling: These 2 json files work together. Therefore, it is important that you make sure the categories in both json files are written the same way, otherwise the program won't be able to link them properly.
     - in _words.json_, the category _"ignore"_ is a special category. It is reserved for expenses that you would like to ignore aka not visible in the result. In the example above, any expense that has the word "investment" or "find & save" will be removed from the result.
 
+4. Run the BudgetProgram.py by double-clicking on it.
+5. When prompted, drop your bank statement in the window, then press Enter.
+6. Follow prompt to enter the year and month for which you would like to analyze.
+7. If all is correct, the program should run successfully and you will see this message: _"Analysis complete. The Excel sheet is saved in the following folder: ..."_
+8. Navigate to the mentioned folder, and voilà, the result is inside the file _BUDGET.xlsx_
+9. Open the file _BUDGET.xlsx_, for every month that you choose to analyze, there will be a sheet generated for it. For example, if you enter 2022 and 11 (or November) when prompted for year and date at the beginning of the program, now the Excel file should contain a sheet named _"2022-11"_
+10. Note that the program can't process all 100% transactions. You can now go through the remaining unprocessed expenses to categorize them. The result will be reflected in real time in the Summary table at the bottom of the sheet.
+
+
+## Limitations
+- For now, this program only works with csv bank statements from RBC (Royal Bank of Canada). However, enhancements are being planned so it can work with any type of bank statements.
+- The program can’t analyze all transactions. It will attempt to categorize as many transactions as possible (transactions with words that it recognizes)
+- Users must be familiar with JSON
+- The program has only been tested on MacOS M1 machines. I am aware that there could be issues when runnning on other OS systems. However, this will be fixed in future versions.
+
+## Future enhancements
+- Improve program to work with any bank statement
+- Develop CLI to let users modify budget (instead of modifying directly JSON files)
+- Develop a logging system
+- Integrate AI to learn from user's manual categorization and apply to future processing
+
+## Technical principles in this project
+1. helpers: separation of concerns
+2. Scalable and reusable 
+3. Maintainability
+    1. Low coupling: Helpers are independent → changes in one won’t affect the other
+    2. High cohesion: designated helpers for different functionalities
+4. backup system
+5. logging system
+
+
+## Credits
+- Openpyxl
+
+## Troubleshooting
+If you encounter error: _"BudgetProgram.py cannot be opened because the developer cannot be verified."_
+- By default, macOS allows users to install only approved apps from developers registered with Apple that have verified their apps for use on Macs.
+- To resolve this error, you must disable GateKeeper of macOS
+- In the Terminal, type the following command and press Enter:
+    ```bash
+    sudo spctl --master-disable
+    ```
+
 
