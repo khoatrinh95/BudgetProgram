@@ -159,6 +159,7 @@ Unlike other budgeting apps, this program only uses your banking statements and 
 
 ## Credits
 - Openpyxl
+- @JCLaHoot for designing the beautiful banner
 
 ## Troubleshooting
 If you encounter error: _"BudgetProgram.py cannot be opened because the developer cannot be verified."_
