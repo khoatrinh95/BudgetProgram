@@ -13,7 +13,7 @@ categoryDict = JsonHelper.read_json(constants.WORDS_JSON_PATH)
 categories = categoryDict.keys()
 
 # Read budget json
-budgetDict = JsonHelper.read_json(constants.BUDGET_JSON_PATH)[constants.BUDGET_TYPE]
+budgetDict = JsonHelper.read_json(constants.BUDGET_JSON_PATH)
 
 
 def main_program():

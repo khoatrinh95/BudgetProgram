@@ -44,7 +44,6 @@ DATA_FOLDER_PATH = 'data/'
 OUTPUT_FOLDER_PATH = 'output/'
 
 # BUDGET TO COMPARE
-BUDGET_TYPE = "budget1"
 BUDGET_PROFILE = "profile1"
 
 # INPUT
@@ -56,6 +55,7 @@ WORDS_JSON_PATH = resource_path(PROFILE_FOLDER_PATH + BUDGET_PROFILE + '/' + 'wo
 STYLE_JSON_PATH = resource_path(DATA_FOLDER_PATH + 'style.json')
 BUDGET_JSON_PATH = resource_path(PROFILE_FOLDER_PATH + BUDGET_PROFILE + '/' + 'budget.json')
 BACKUP_FOLDER_PATH = resource_path(BACKUP_FOLDER_PATH)
+OUTPUT_FOLDER_PATH = resource_path(OUTPUT_FOLDER_PATH)
 OUTPUT_EXCEL_PATH = resource_path(OUTPUT_FOLDER_PATH + "BUDGET.xlsx")
 
 
