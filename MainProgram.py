@@ -48,7 +48,7 @@ def main_program():
 
     # Analyze
     for category in categories:
-        condition = description.apply(lambda d: any([word in d.lower() for word in categoryDict[category]]))
+        condition = description.apply(lambda d: any([word.lower() in d.lower() for word in categoryDict[category]]))
         DFHelper.update_df_on_condition(df, condition, constants.CATEGORY, category)
 
     # Append result to Excel
