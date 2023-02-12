@@ -28,7 +28,7 @@ Unlike other budgeting apps, this program only uses your banking statements and 
 * Have Python installed on your computer
 
 ### Installation
-* Download the [zip](https://drive.google.com/file/d/1VtKbPxz59oHonwtxGh31ATK15H2AnBPu/view?usp=share_link) file
+* Download the [zip](https://drive.google.com/drive/folders/1Ice5JLHoRVsGX_3HYXtnEmSCB8RgjrZh?usp=share_link) file
 * Unzip it. There should be several files in the unzipped folder. The notable files/folders to pay attention to:
     - ___BudgetProgram.py___: the main program
     - ___profiles___
