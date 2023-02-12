@@ -4,13 +4,15 @@
       "pine beach",
       "bixi",
       "stm",
+      "carte opus",
       "uber",
       "essence",
       "gas station",
       "ultramar",
       "shell",
       "petro",
-      "esso"
+      "esso",
+      "communauto"
    ],
    "phone":[
       "telus",
@@ -21,20 +23,31 @@
    ],
    "shopping":[
       "amazon",
-      "apple",
       "zara",
       "sports experts",
       "decathlon",
       "pharmaprix",
-      "jean coutu"
+      "jean coutu",
+      "home depot",
+      "magasin",
+      "dollarama",
+      "walmart",
+      "simon",
+      "root",
+      "renaissance",
+      "michael rossy"
    ],
-   "activity":[
+   "personal needs":[
+      "barber",
+      "fitness",
+      "coinamatic"
 
    ],
    "food":[
       "tim hortons",
       "presotea",
       "subway",
+      "a&w",
       "cafe",
       "starbucks",
       "shawarmaz",
@@ -47,14 +60,54 @@
       "sandwich",
       "pho",
       "cuisine",
-      "mcdonald"
+      "mcdonald",
+      "food",
+      "restaurant",
+      "doordash",
+      "timeout",
+      "ubereat",
+      "harvey",
+      "poulet rouge",
+      "fondu",
+      "bagel",
+      "amir",
+      "the alley",
+      "opiano",
+      "petit seoul"
    ],
    "grocery":[
       "adonis",
       "iga",
       "metro",
-      "maxi"
+      "maxi",
+      "provigo",
+      "newon",
+      "kim phat",
+      "epicerie",
+      "fruiterie"
    ],
+   "subscription":[
+      "google",
+      "apple"
+   ],
+
+   "activity": [
+      "club",
+      "bar",
+      "pub",
+      "ski",
+      "sommet",
+      "sqdc"
+   ],
+
+   "hydro": [
+      "hydro"
+   ],
+
+   "rent": [
+      "capreit"
+   ],
+
    "ignore":[
       "investment",
       "find & save"

@@ -25,7 +25,11 @@ def main_program():
     # Create Category column
     DFHelper.create_new_column_with_value(df, constants.CATEGORY, "")
 
+    # Remove transactions with empty amount
+    df = DFHelper.filter_df(df, df[constants.CAD].notnull())
+
     # Remove non-expense transactions
+    df[constants.CAD] = pd.to_numeric(df[constants.CAD])
     df = DFHelper.filter_df(df, df[constants.CAD] < 0)
 
     # Convert Transaction Date to proper date format
@@ -149,5 +153,5 @@ def main_program():
 
 # command to run pyinstaller
 """
-pyinstaller --paths=/Users/khoatrinh/DevSpace/Budget/lib/python3.9/site-packages --add-data profiles:profiles --add-data data:data --add-data output:output MainProgram.py
+pyinstaller --paths=/Users/khoatrinh/DevSpace/Budget/lib/python3.9/site-packages --add-data profiles:profiles --add-data data:data --add-data output:output BudgetProgram.py
 """
