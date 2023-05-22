@@ -1,4 +1,5 @@
 import datetime
+from Helpers.CSVHelper import read_csv
 
 
 def greeting():
@@ -23,7 +24,14 @@ def end():
 
 
 def prompt_for_file():
-    return input("Please drop your bank statement in the window\n")
+    while True:
+        file = input("Please drop your bank statement in the window\n")
+        try:
+            read_csv(file, False)
+            return file
+        except:
+            print("Cannot read file")
+
 
 
 def prompt_for_year():

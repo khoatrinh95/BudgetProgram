@@ -70,7 +70,19 @@ def get_letter_of_column(index):
     return get_column_letter(index)
 
 
-def comparing_conditional_formatting(excel_book, sheet_name, compared_cell, comparing_cell, positive_fill, negative_fill):
+def comparing_conditional_formatting(excel_book, sheet_name, compared_cell, comparing_cell, less_than_comparing_cell_fill, greater_than_comparing_cell_fill):
     ws = excel_book.book[sheet_name]
-    ws.conditional_formatting.add(compared_cell, CellIsRule(operator='greaterThan', formula=[comparing_cell], fill=negative_fill))
-    ws.conditional_formatting.add(compared_cell, CellIsRule(operator='lessThan', formula=[comparing_cell], fill=positive_fill))
+    ws.conditional_formatting.add(compared_cell, CellIsRule(operator='greaterThan', formula=[comparing_cell], fill=greater_than_comparing_cell_fill))
+    ws.conditional_formatting.add(compared_cell, CellIsRule(operator='lessThan', formula=[comparing_cell], fill=less_than_comparing_cell_fill))
+
+
+# this function returns the formula in the cell (including prefix equal sign), not the real value
+def read_cell_formula(excel_book, sheet_name, cell_row, cell_column):
+    ws = excel_book.book[sheet_name]
+    return ws.cell(cell_row, cell_column).value
+
+
+# this function returns the formula in the cell (excluding prefix equal sign), not the real value, for the purpose to be nested in another formula
+def read_cell_formula_without_equal_sign(excel_book, sheet_name, cell_row, cell_column):
+    cell_formula = read_cell_formula(excel_book, sheet_name, cell_row, cell_column)
+    return cell_formula[1:]

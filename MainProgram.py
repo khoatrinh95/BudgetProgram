@@ -15,6 +15,8 @@ categories = categoryDict.keys()
 # Read budget json
 budgetDict = JsonHelper.read_json(constants.BUDGET_JSON_PATH)
 
+# Read income json
+incomeDict = JsonHelper.read_json(constants.INCOME_JSON_PATH)
 
 def main_program():
     # Read csv
@@ -83,20 +85,20 @@ def main_program():
     red_fill = ExcelStyleHelper.createPatternFill(**red_fill_style)
 
     # Add summary header
-    ExcelHelper.write_to_cell(excel_book, sheet_name, cell_row=current_row, cell_column=1, value="",
+    ExcelHelper.write_to_cell(excel_book, sheet_name, cell_row=current_row, cell_column=constants.FIRST_COLUMN_INDEX, value="",
                               cell_style=constants.STYLE_NAME_HEADER1)
-    ExcelHelper.write_to_cell(excel_book, sheet_name, cell_row=current_row, cell_column=2, value="SUMMARY",
+    ExcelHelper.write_to_cell(excel_book, sheet_name, cell_row=current_row, cell_column=constants.SECOND_COLUMN_INDEX, value="SUMMARY",
                               cell_style=constants.STYLE_NAME_HEADER1)
-    ExcelHelper.write_to_cell(excel_book, sheet_name, cell_row=current_row, cell_column=3, value="",
+    ExcelHelper.write_to_cell(excel_book, sheet_name, cell_row=current_row, cell_column=constants.THIRD_COLUMN_INDEX, value="",
                               cell_style=constants.STYLE_NAME_HEADER1)
     current_row = current_row + 1
 
     # Add Category, Actual Cost, Projected Cost headers
-    ExcelHelper.write_to_cell(excel_book, sheet_name, cell_row=current_row, cell_column=1, value="CATEGORY",
+    ExcelHelper.write_to_cell(excel_book, sheet_name, cell_row=current_row, cell_column=constants.FIRST_COLUMN_INDEX, value="CATEGORY",
                               cell_style=constants.STYLE_NAME_HEADER3_LEFT)
-    ExcelHelper.write_to_cell(excel_book, sheet_name, cell_row=current_row, cell_column=2, value="ACTUAL COST",
+    ExcelHelper.write_to_cell(excel_book, sheet_name, cell_row=current_row, cell_column=constants.SECOND_COLUMN_INDEX, value="ACTUAL COST",
                               cell_style=constants.STYLE_NAME_HEADER3_RIGHT)
-    ExcelHelper.write_to_cell(excel_book, sheet_name, cell_row=current_row, cell_column=3, value="PROJECTED COST",
+    ExcelHelper.write_to_cell(excel_book, sheet_name, cell_row=current_row, cell_column=constants.THIRD_COLUMN_INDEX, value="PROJECTED COST",
                               cell_style=constants.STYLE_NAME_HEADER3_RIGHT)
     current_row = current_row + 1
 
@@ -107,13 +109,13 @@ def main_program():
         # =-1*SUMIF(J2:J<end> , <category> , H2:H<end>)
         formula = f"=-1*SUMIF({category_column_letter}2:{category_column_letter}{last_row},\"{category}\",{amount_column_letter}2:{amount_column_letter}{last_row})"
         # print(formula)
-        ExcelHelper.write_to_cell(excel_book, sheet_name, cell_row=current_row, cell_column=1, value=category.capitalize(),
+        ExcelHelper.write_to_cell(excel_book, sheet_name, cell_row=current_row, cell_column=constants.FIRST_COLUMN_INDEX, value=category.capitalize(),
                                   cell_style=constants.STYLE_NAME_ALIGN_LEFT)
-        ExcelHelper.write_to_cell(excel_book, sheet_name, cell_row=current_row, cell_column=2, value=formula,
+        ExcelHelper.write_to_cell(excel_book, sheet_name, cell_row=current_row, cell_column=constants.SECOND_COLUMN_INDEX, value=formula,
                                   cell_style=constants.STYLE_NAME_ALIGN_RIGHT)
-        ExcelHelper.write_to_cell(excel_book, sheet_name, cell_row=current_row, cell_column=3, value=budgetDict[category],
+        ExcelHelper.write_to_cell(excel_book, sheet_name, cell_row=current_row, cell_column=constants.THIRD_COLUMN_INDEX, value=budgetDict[category],
                                   cell_style=constants.STYLE_NAME_ALIGN_RIGHT)
-        compared_cell = ExcelHelper.get_letter_of_column(2) + str(current_row)
+        compared_cell = ExcelHelper.get_letter_of_column(constants.SECOND_COLUMN_INDEX) + str(current_row)
         ExcelHelper.comparing_conditional_formatting(excel_book, sheet_name, compared_cell, budgetDict[category], None,
                                                      red_fill)
         current_row = current_row + 1
@@ -121,12 +123,42 @@ def main_program():
     # Add Total at end
     actual_sum_formula = f"=SUM(B{start_row_summary}:B{current_row - 1})"
     projected_sum_formula = f"=SUM(C{start_row_summary}:C{current_row - 1})"
-    ExcelHelper.write_to_cell(excel_book, sheet_name, cell_row=current_row, cell_column=1, value="TOTAL",
+    ExcelHelper.write_to_cell(excel_book, sheet_name, cell_row=current_row, cell_column=constants.FIRST_COLUMN_INDEX, value="TOTAL",
                               cell_style=constants.STYLE_NAME_HEADER2_LEFT)
-    ExcelHelper.write_to_cell(excel_book, sheet_name, cell_row=current_row, cell_column=2, value=actual_sum_formula,
+    ExcelHelper.write_to_cell(excel_book, sheet_name, cell_row=current_row, cell_column=constants.SECOND_COLUMN_INDEX, value=actual_sum_formula,
                               cell_style=constants.STYLE_NAME_HEADER2_RIGHT)
-    ExcelHelper.write_to_cell(excel_book, sheet_name, cell_row=current_row, cell_column=3, value=projected_sum_formula,
+    ExcelHelper.write_to_cell(excel_book, sheet_name, cell_row=current_row, cell_column=constants.THIRD_COLUMN_INDEX, value=projected_sum_formula,
                               cell_style=constants.STYLE_NAME_HEADER2_RIGHT)
+    total_row = current_row
+    current_row = current_row + 1
+
+    # Add income at end (only add if user inputs their income in income.json)
+    if len(incomeDict) != 0:
+        monthly_income = incomeDict[constants.MONTHLY]
+        ExcelHelper.write_to_cell(excel_book, sheet_name, cell_row=current_row, cell_column=constants.FIRST_COLUMN_INDEX, value="INCOME",
+                                  cell_style=constants.STYLE_NAME_HEADER2_LEFT)
+        ExcelHelper.write_to_cell(excel_book, sheet_name, cell_row=current_row, cell_column=constants.SECOND_COLUMN_INDEX, value=monthly_income,
+                                  cell_style=constants.STYLE_NAME_HEADER2_RIGHT)
+        ExcelHelper.write_to_cell(excel_book, sheet_name, cell_row=current_row, cell_column=constants.THIRD_COLUMN_INDEX, value=monthly_income,
+                                  cell_style=constants.STYLE_NAME_HEADER2_RIGHT)
+        income_row = current_row
+        current_row = current_row + 1
+
+        # Add saving/loss at end
+        actual_sum = ExcelHelper.read_cell_formula_without_equal_sign(excel_book, sheet_name, total_row, constants.SECOND_COLUMN_INDEX)
+        projected_sum = ExcelHelper.read_cell_formula_without_equal_sign(excel_book, sheet_name, total_row, constants.THIRD_COLUMN_INDEX)
+        actual_saving_or_loss = f"=B{income_row}-{actual_sum}"
+        projected_saving_or_loss = f"=C{income_row}-{projected_sum}"
+        ExcelHelper.write_to_cell(excel_book, sheet_name, cell_row=current_row, cell_column=constants.FIRST_COLUMN_INDEX, value="SAVING/LOSS",
+                                  cell_style=constants.STYLE_NAME_HEADER2_LEFT)
+        ExcelHelper.write_to_cell(excel_book, sheet_name, cell_row=current_row, cell_column=constants.SECOND_COLUMN_INDEX, value=actual_saving_or_loss,
+                                  cell_style=constants.STYLE_NAME_HEADER2_RIGHT)
+        ExcelHelper.write_to_cell(excel_book, sheet_name, cell_row=current_row, cell_column=constants.THIRD_COLUMN_INDEX, value=projected_saving_or_loss,
+                                  cell_style=constants.STYLE_NAME_HEADER2_RIGHT)
+        compared_cell = ExcelHelper.get_letter_of_column(constants.SECOND_COLUMN_INDEX) + str(current_row)
+        ExcelHelper.comparing_conditional_formatting(excel_book, sheet_name, compared_cell, 0, red_fill,
+                                                     None)
+
 
     # Format Excel sheet
     ExcelHelper.adjust_column_width(excel_book, sheet_name)

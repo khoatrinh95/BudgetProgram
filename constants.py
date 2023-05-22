@@ -21,6 +21,9 @@ CATEGORY = "Category"
 # CATEGORIES
 IGNORE = "ignore"
 
+# INCOME
+MONTHLY = "monthly"
+
 # STYLE CONFIG
 STYLE_NAME = 'name'
 STYLE_FONT = 'font'
@@ -54,9 +57,12 @@ YEAR = None
 WORDS_JSON_PATH = resource_path(PROFILE_FOLDER_PATH + BUDGET_PROFILE + '/' + 'words.json')
 STYLE_JSON_PATH = resource_path(DATA_FOLDER_PATH + 'style.json')
 BUDGET_JSON_PATH = resource_path(PROFILE_FOLDER_PATH + BUDGET_PROFILE + '/' + 'budget.json')
+INCOME_JSON_PATH = resource_path(PROFILE_FOLDER_PATH + BUDGET_PROFILE + '/' + 'income.json')
 BACKUP_FOLDER_PATH = resource_path(BACKUP_FOLDER_PATH)
 OUTPUT_FOLDER_PATH = resource_path(OUTPUT_FOLDER_PATH)
 OUTPUT_EXCEL_PATH = resource_path(OUTPUT_FOLDER_PATH + "BUDGET.xlsx")
 
-
-# /Users/khoatrinh/Downloads/csv75031.csv
+# SUMMARY TABLE
+FIRST_COLUMN_INDEX = 1
+SECOND_COLUMN_INDEX = 2
+THIRD_COLUMN_INDEX = 3
