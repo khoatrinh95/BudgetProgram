@@ -40,10 +40,12 @@
    "personal needs":[
       "barber",
       "fitness",
-      "coinamatic"
+      "coinamatic",
+      "doctor",
+      "dermatologist"
 
    ],
-   "food":[
+   "eating out":[
       "tim hortons",
       "presotea",
       "subway",
@@ -73,7 +75,8 @@
       "amir",
       "the alley",
       "opiano",
-      "petit seoul"
+      "petit seoul",
+      "intermarche"
    ],
    "grocery":[
       "adonis",
@@ -106,6 +109,10 @@
 
    "rent": [
       "capreit"
+   ],
+
+   "loan": [
+      "loan"
    ],
 
    "ignore":[
